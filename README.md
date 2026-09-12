@@ -39,10 +39,12 @@ Aplikasi ini adalah static web application (HTML5, CSS3, ES Modules).
 
 ## 💻 Local Development
 
-Run with Node.js built-in server:
+Jalankan server lokal dengan Node.js:
 
 ```bash
-node server.js
+npm start
+# atau:
+node local-server.js
 ```
 
-Open `http://localhost:3000` in your browser.
+Buka `http://localhost:3000` di browser.
