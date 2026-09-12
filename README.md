@@ -29,7 +29,7 @@ Aesthetic Korean 4-Cut Photobooth Studio web application. Designed for mobile an
 
 This project is built with vanilla HTML, CSS, and modern ES Modules with zero external dependencies.
 
-1. Connect your repository (`https://github.com/Ridxzu24/amel`) to [Vercel](https://vercel.com).
+1. Connect your repository (`https://github.com/Faridzzz24/A`) to [Vercel](https://vercel.com).
 2. Framework Preset: **Other** (Root Directory: `./`).
 3. Click **Deploy**. Vercel will immediately host the static web app.
 
