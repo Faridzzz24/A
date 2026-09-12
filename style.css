@@ -1,0 +1,1144 @@
+/* ==========================================================================
+   인생네컷 • LIFE FOUR CUTS KOREAN PHOTOBOOTH STUDIO
+   Aesthetic Pastel Y2K Purikura Style | Ultra-Responsive Mobile & Desktop
+   ========================================================================== */
+
+:root {
+  --bg-studio: #fbf7f4;
+  --bg-card: rgba(255, 255, 255, 0.88);
+  --border-soft: rgba(0, 0, 0, 0.08);
+  --text-main: #27272a;
+  --text-sub: #71717a;
+  
+  --primary-pink: #f43f5e;
+  --accent-blush: #fbcfe8;
+  
+  --font-heading: 'Outfit', -apple-system, sans-serif;
+  --font-korean: 'Gaegu', cursive;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  --strip-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 999px;
+  
+  --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-studio);
+  color: var(--text-main);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(at 15% 15%, rgba(254, 205, 211, 0.35) 0px, transparent 50%),
+    radial-gradient(at 85% 85%, rgba(203, 227, 251, 0.35) 0px, transparent 50%);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Flash animation overlay */
+.camera-flash {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  transition: opacity 0.05s ease-out;
+}
+.camera-flash.flash-active {
+  opacity: 0.95;
+  transition: opacity 0.35s ease-out;
+}
+
+/* Studio Container */
+.studio-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem 1.5rem 1rem;
+}
+
+@media (min-width: 860px) {
+  .studio-container {
+    padding: 1.5rem 2rem;
+  }
+}
+
+/* Header */
+.studio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 0.25rem 0.75rem 0.25rem;
+}
+
+.studio-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.studio-cam-icon {
+  font-size: 1.4rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.branding-meta h1 {
+  font-family: var(--font-korean);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #18181b;
+}
+
+.studio-tag {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--primary-pink);
+  text-transform: uppercase;
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pill-btn {
+  border: 1px solid var(--border-soft);
+  background: #ffffff;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: var(--transition);
+}
+
+.pill-btn:hover {
+  background: #f4f4f5;
+  color: var(--text-main);
+  transform: scale(1.02);
+}
+
+.pill-btn:active {
+  transform: scale(0.96);
+}
+
+.pill-btn.active {
+  background: var(--primary-pink);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* Workspace Layout */
+.studio-workspace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1;
+  width: 100%;
+}
+
+@media (min-width: 860px) {
+  .studio-workspace {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    padding-top: 1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   THE PHOTOSTRIP (AUTHENTIC KOREAN LIFE FOUR CUTS STYLE)
+   -------------------------------------------------------------------------- */
+.photostrip-stage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 860px) {
+  .photostrip-stage {
+    width: auto;
+  }
+}
+
+.korean-photostrip {
+  width: 250px;
+  border-radius: 12px;
+  padding: 14px 12px 16px 12px;
+  box-shadow: var(--strip-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+@media (min-width: 860px) {
+  .korean-photostrip {
+    width: 280px;
+    padding: 16px 14px 18px 14px;
+    gap: 12px;
+  }
+  .korean-photostrip:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* ==========================================================================
+   CUTE & THEMED PHOTOSTRIP FRAMES (BANYAK VARIAN, LUCU & TIDAK POLOS)
+   ========================================================================== */
+/* 1. Pita Ribbon (Soft Pink with Cute Bow & Dot Pattern) */
+.frame-ribbon {
+  background-color: #ffdce5;
+  background-image: 
+    radial-gradient(#f43f5e 0.75px, transparent 0.75px),
+    radial-gradient(#f43f5e 0.75px, #ffdce5 0.75px);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  border: 3px dashed #f472b6;
+  color: #831843;
+}
+
+/* 2. Cloud Dream (Sky Blue with Soft Fluffy Gradients) */
+.frame-clouds {
+  background-color: #dbeafe;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.8) 18px, transparent 20px),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.8) 22px, transparent 24px),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.7) 16px, transparent 18px);
+  background-size: 80px 100px;
+  border: 3px solid #93c5fd;
+  color: #1e3a8a;
+}
+
+/* 3. Butter Plaid (Picnic Gingham Plaid Pattern) */
+.frame-gingham {
+  background-color: #fef3c7;
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(245, 158, 11, 0.15) 0px, rgba(245, 158, 11, 0.15) 12px, transparent 12px, transparent 24px),
+    repeating-linear-gradient(90deg, rgba(245, 158, 11, 0.15) 0px, rgba(245, 158, 11, 0.15) 12px, transparent 12px, transparent 24px);
+  border: 3px solid #fde68a;
+  color: #78350f;
+}
+
+/* 4. Strawberry Polka (Cute Red/Pink Dots) */
+.frame-strawberry {
+  background-color: #fff1f2;
+  background-image: radial-gradient(#fb7185 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+  border: 3px double #f43f5e;
+  color: #9f1239;
+}
+
+/* 5. Matcha Hearts (Soft Sage Green with Doodle Hearts) */
+.frame-matcha {
+  background-color: #dcfce7;
+  background-image: 
+    radial-gradient(#16a34a 1px, transparent 1px),
+    radial-gradient(#22c55e 1px, #dcfce7 1px);
+  background-size: 18px 18px;
+  background-position: 0 0, 9px 9px;
+  border: 3px solid #86efac;
+  color: #14532d;
+}
+
+/* 6. Lilac Stars (Dreamy Purple with Sparkle Constellations) */
+.frame-lavender {
+  background-color: #ede9fe;
+  background-image: 
+    radial-gradient(#8b5cf6 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.9) 2px, transparent 2px);
+  background-size: 24px 24px, 36px 36px;
+  border: 3px solid #c4b5fd;
+  color: #4c1d95;
+}
+
+/* 7. Vintage Film (Classic Sprocket Film Frame) */
+.frame-film {
+  background-color: #18181b;
+  background-image: 
+    radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 8px 8px;
+  border: 3px solid #27272a;
+  color: #f4f4f5;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* 8. Pastel Soft (Clean Pink) */
+.frame-pink {
+  background-color: #ffd1dc;
+  border: 3px solid #fbcfe8;
+  color: #831843;
+}
+
+/* Strip Header */
+.strip-header-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  padding: 0 2px;
+  opacity: 0.75;
+}
+
+.strip-dots {
+  letter-spacing: 2px;
+}
+
+/* Strip Photos List */
+.strip-photos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+@media (min-width: 860px) {
+  .strip-photos-list {
+    gap: 10px;
+  }
+}
+
+.strip-photo-item {
+  position: relative;
+  width: 100%;
+  height: 195px;
+  background: #ffffff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+@media (min-width: 860px) {
+  .strip-photo-item {
+    height: 220px;
+  }
+}
+
+.strip-photo-item:active {
+  transform: scale(0.985);
+}
+
+.strip-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  transition: filter 0.3s ease, object-position 0.2s ease;
+}
+
+/* ==========================================================================
+   PRECISE FACE ALIGNMENTS (SEJAJAR & PAS MUKA)
+   ========================================================================== */
+/* Cut 1: Helmet + Peace Sign (Focus on helmet, eyes, lips, hand) */
+.strip-photo-item[data-frame="0"] .strip-img {
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* Cut 2: Cozy Bengong (Face & Hand on cheek are on the right side) */
+.strip-photo-item[data-frame="1"] .strip-img {
+  object-fit: cover;
+  object-position: 70% 32%;
+}
+
+/* Cut 3: Iced Coffee (Focus on eyes, pout, and drink cup) */
+.strip-photo-item[data-frame="2"] .strip-img {
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+/* Cut 4: Glasses Mode (Focus on stylish glasses and sweet smile) */
+.strip-photo-item[data-frame="3"] .strip-img {
+  object-fit: cover;
+  object-position: center 24%;
+}
+
+/* Photo Filter Variations */
+.filter-normal .strip-img {
+  filter: none;
+}
+.filter-glow .strip-img {
+  filter: brightness(1.06) contrast(0.95) saturate(1.15);
+}
+.filter-warm .strip-img {
+  filter: sepia(0.25) brightness(1.03) contrast(1.05);
+}
+.filter-mono .strip-img {
+  filter: grayscale(1) contrast(1.1) brightness(1.02);
+}
+
+.frame-tag-badge {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Sticker Layer */
+.photo-sticker-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: auto;
+}
+
+.dropped-sticker {
+  position: absolute;
+  font-size: 2.2rem;
+  cursor: grab;
+  touch-action: none;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+  animation: stickerPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+}
+
+.dropped-sticker:active {
+  cursor: grabbing;
+  transform: scale(1.15);
+}
+
+@keyframes stickerPop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/* Strip Footer */
+.strip-footer-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+  padding-top: 4px;
+}
+
+.footer-barcode {
+  font-family: monospace;
+  font-size: 0.58rem;
+  letter-spacing: 1px;
+  opacity: 0.65;
+}
+
+.footer-brand-title h3 {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.footer-brand-title p {
+  font-family: var(--font-korean);
+  font-size: 0.78rem;
+  opacity: 0.8;
+}
+
+/* --------------------------------------------------------------------------
+   CUSTOMIZER PANEL (CLEAN, TACTILE, RESPONSIVE)
+   -------------------------------------------------------------------------- */
+.customizer-panel {
+  width: 100%;
+  max-width: 360px;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 860px) {
+  .customizer-panel {
+    max-width: 380px;
+    padding: 1.25rem;
+    position: sticky;
+    top: 1.5rem;
+  }
+}
+
+/* Segmented Tabs */
+.customizer-tabs {
+  display: flex;
+  background: #f1f1f4;
+  padding: 4px;
+  border-radius: var(--radius-full);
+  gap: 2px;
+}
+
+.c-tab {
+  flex: 1;
+  padding: 0.45rem 0.25rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.c-tab.active {
+  background: #ffffff;
+  color: var(--text-main);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Tab Panes */
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Color Options Grid */
+.color-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.color-swatch-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.6rem 0.35rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  background: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  transition: var(--transition);
+}
+
+.color-swatch-btn:hover {
+  transform: translateY(-2px);
+}
+
+.color-swatch-btn.active {
+  border-color: var(--primary-pink);
+  background: #fff5f7;
+}
+
+.swatch-color {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.swatch-name {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+/* Filter Options Grid */
+.filter-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  background: #ffffff;
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  border-color: var(--primary-pink);
+  background: #fff5f7;
+  color: var(--primary-pink);
+}
+
+/* Stickers Tray */
+.sticker-hint {
+  font-size: 0.72rem;
+  color: var(--text-sub);
+  margin-bottom: 0.6rem;
+  text-align: center;
+}
+
+.sticker-tray-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.sticker-chip {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-sm);
+  font-size: 1.45rem;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+  transition: var(--transition);
+}
+
+.sticker-chip:hover {
+  transform: scale(1.15);
+  border-color: var(--primary-pink);
+}
+
+.sticker-chip:active {
+  transform: scale(0.92);
+}
+
+.clear-stickers-btn {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px dashed #cbd5e1;
+  background: transparent;
+  color: var(--text-sub);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.clear-stickers-btn:hover {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+/* ==========================================================================
+   PHOTO ADJUSTMENT CONTROLS (PAN, ZOOM, UPLOAD)
+   ========================================================================== */
+.adjust-panel-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.cut-selector-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.adjust-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-sub);
+}
+
+.cut-buttons-group {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.35rem;
+}
+
+.cut-select-btn {
+  padding: 0.5rem 0.25rem;
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  border: 1.5px solid var(--border-soft);
+  color: var(--text-main);
+  font-size: 0.75rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cut-select-btn.active {
+  border-color: var(--primary-pink);
+  background: #fff1f2;
+  color: var(--primary-pink);
+}
+
+.cut-select-btn:hover {
+  border-color: var(--primary-pink);
+}
+
+/* Upload Custom Photo */
+.btn-upload-photo {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  border: 1.5px dashed var(--primary-pink);
+  color: var(--primary-pink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: var(--transition);
+}
+
+.btn-upload-photo:hover {
+  background: #fff1f2;
+  transform: translateY(-1px);
+}
+
+/* Zoom Slider & Controls */
+.zoom-control-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-soft);
+}
+
+.btn-zoom-step {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #f4f4f5;
+  border: 1px solid var(--border-soft);
+  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  transition: var(--transition);
+}
+
+.btn-zoom-step:hover {
+  background: var(--primary-pink);
+  color: #fff;
+  border-color: transparent;
+}
+
+.zoom-range-input {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: #e4e4e7;
+  border-radius: 99px;
+  outline: none;
+  cursor: pointer;
+}
+
+.zoom-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary-pink);
+  box-shadow: 0 2px 5px rgba(244, 63, 94, 0.35);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.zoom-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.zoom-val-text {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-main);
+  width: 32px;
+  text-align: right;
+}
+
+/* Footer Hints */
+.adjust-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.gesture-hint {
+  font-size: 0.68rem;
+  color: var(--text-sub);
+  line-height: 1.3;
+}
+
+.btn-reset-pos {
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-full);
+  background: transparent;
+  border: 1px solid var(--border-soft);
+  color: var(--text-sub);
+  font-size: 0.68rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+
+.btn-reset-pos:hover {
+  background: #f4f4f5;
+  color: var(--text-main);
+}
+
+/* Photo Active Ring */
+.strip-photo-item.is-selected {
+  outline: 2.5px solid var(--primary-pink);
+  outline-offset: 1px;
+}
+
+.strip-photo-item {
+  cursor: grab;
+  touch-action: none;
+}
+
+.strip-photo-item.is-panning {
+  cursor: grabbing;
+}
+
+/* Dual Source Actions: Gallery + Live Camera */
+.photo-source-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.btn-source-action {
+  padding: 0.65rem 0.5rem;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  border: 1.5px solid var(--border-soft);
+  color: var(--text-main);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: var(--transition);
+}
+
+.btn-source-action:hover {
+  background: #f4f4f5;
+  border-color: var(--primary-pink);
+  color: var(--primary-pink);
+}
+
+.btn-camera-action {
+  background: #fff1f2;
+  border-color: var(--primary-pink);
+  color: var(--primary-pink);
+}
+
+.btn-camera-action:hover {
+  background: #ffe4e6;
+}
+
+/* Theme Swatch Previews */
+.swatch-preview {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  background: #f4f4f5;
+  border: 1px solid var(--border-soft);
+}
+
+/* Action Buttons Bar */
+.studio-action-bar {
+  display: flex;
+  width: 100%;
+  margin-top: 0.25rem;
+}
+
+.btn-action {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-full);
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.btn-download {
+  background: linear-gradient(135deg, var(--primary-pink), #e11d48);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.35);
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(244, 63, 94, 0.45);
+}
+
+.btn-action:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================================
+   LIVE CAMERA VIEWFINDER MODAL
+   ========================================================================== */
+.camera-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.camera-modal-box {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.camera-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.camera-modal-header h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.camera-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-soft);
+  background: #f4f4f5;
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.camera-close-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.camera-viewfinder-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  background: #000;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+}
+
+#cameraVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* Mirror selfie */
+}
+
+.camera-countdown-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 4px 16px rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.3);
+  animation: countdownPulse 1s ease infinite;
+}
+
+@keyframes countdownPulse {
+  0% { transform: scale(1.3); opacity: 0.7; }
+  50% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+.camera-target-hint {
+  font-size: 0.78rem;
+  color: var(--text-sub);
+}
+
+.camera-target-hint strong {
+  color: var(--primary-pink);
+}
+
+.camera-action-controls {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-snap-photo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--primary-pink), #e11d48);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(244, 63, 94, 0.4);
+  transition: var(--transition);
+}
+
+.btn-snap-photo:hover {
+  transform: scale(1.04);
+}
+
+.snap-shutter-circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  display: inline-block;
+}
+
+/* Camera Fallback Overlay */
+.camera-fallback-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 18, 20, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+  z-index: 10;
+}
+
+.camera-fallback-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: 280px;
+}
+
+.fallback-icon {
+  font-size: 2.2rem;
+}
+
+.camera-fallback-content h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fbcfe8;
+}
+
+.camera-fallback-content p {
+  font-size: 0.78rem;
+  color: #d4d4d8;
+  line-height: 1.45;
+}
+
+.btn-fallback-gallery {
+  margin-top: 0.4rem;
+  background: linear-gradient(135deg, var(--primary-pink), #e11d48);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: 0.6rem 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(244, 114, 182, 0.4);
+  transition: var(--transition);
+}
+
+.btn-fallback-gallery:hover {
+  transform: scale(1.04);
+}

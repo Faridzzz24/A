@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>인생네컷 • Life Four Cuts Studio</title>
+  
+  <!-- Aesthetic Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Camera Shutter Flash Overlay -->
+  <div id="cameraFlash" class="camera-flash"></div>
+
+  <!-- Main Studio Shell -->
+  <div class="studio-container">
+    
+    <!-- Header Bar -->
+    <header class="studio-header">
+      <div class="studio-branding">
+        <span class="studio-cam-icon">📸</span>
+        <div class="branding-meta">
+          <h1>인생네컷</h1>
+          <span class="studio-tag">LIFE 4 CUTS • STUDIO</span>
+        </div>
+      </div>
+
+      <div class="header-tools">
+        <button id="bgmBtn" class="pill-btn" title="Musik Kotak Lagu">
+          <span>🎵 BGM</span>
+        </button>
+        <button id="sfxBtn" class="pill-btn" title="Suara Pop">
+          <span id="sfxIcon">🔊 Sound</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Workspace: Split on Desktop, Stack on Mobile -->
+    <main class="studio-workspace">
+      
+      <!-- LEFT / CENTER: The Authentic Korean Photostrip -->
+      <section class="photostrip-stage">
+        <div id="photostrip" class="korean-photostrip frame-pink filter-normal">
+          
+          <!-- Top Mini Header on Strip -->
+          <div class="strip-header-meta">
+            <span class="strip-dots">•••</span>
+            <span class="strip-date" id="stripDateLabel">2026.09.12</span>
+            <span class="strip-edition">MEMORIES</span>
+          </div>
+
+          <!-- The 4 Cut Photo Frames -->
+          <div class="strip-photos-list">
+            
+            <!-- Frame 1 -->
+            <div class="strip-photo-item" data-frame="0">
+              <img src="photo1.jpeg" alt="Cut 1" class="strip-img" draggable="false" />
+              <div class="photo-sticker-layer" id="layer0"></div>
+              <span class="frame-tag-badge">01</span>
+            </div>
+
+            <!-- Frame 2 -->
+            <div class="strip-photo-item" data-frame="1">
+              <img src="photo2.jpeg" alt="Cut 2" class="strip-img" draggable="false" />
+              <div class="photo-sticker-layer" id="layer1"></div>
+              <span class="frame-tag-badge">02</span>
+            </div>
+
+            <!-- Frame 3 -->
+            <div class="strip-photo-item" data-frame="2">
+              <img src="photo3.jpeg" alt="Cut 3" class="strip-img" draggable="false" />
+              <div class="photo-sticker-layer" id="layer2"></div>
+              <span class="frame-tag-badge">03</span>
+            </div>
+
+            <!-- Frame 4 -->
+            <div class="strip-photo-item" data-frame="3">
+              <img src="photo4.jpeg" alt="Cut 4" class="strip-img" draggable="false" />
+              <div class="photo-sticker-layer" id="layer3"></div>
+              <span class="frame-tag-badge">04</span>
+            </div>
+
+          </div>
+
+          <!-- Strip Footer Branding -->
+          <div class="strip-footer-meta">
+            <div class="footer-barcode">
+              <span>||||| ||| ||||||| || |||||</span>
+            </div>
+            <div class="footer-brand-title">
+              <h3>LIFE FOUR CUTS</h3>
+              <p>Special Photo Booth Edition ♡</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- RIGHT / BOTTOM: Interactive Customizer Studio -->
+      <section class="customizer-panel">
+        
+        <!-- Category Segmented Tabs -->
+        <div class="customizer-tabs">
+          <button class="c-tab active" data-tab="adjust">📐 Atur Foto</button>
+          <button class="c-tab" data-tab="frames">🎨 Frame</button>
+          <button class="c-tab" data-tab="filters">🪄 Filter</button>
+          <button class="c-tab" data-tab="stickers">🎀 Stiker</button>
+        </div>
+
+        <!-- Tab 0: Adjust / Upload & Pan-Zoom Photo -->
+        <div class="tab-pane active" id="paneAdjust">
+          <div class="adjust-panel-box">
+            <!-- Cut Selector -->
+            <div class="cut-selector-row">
+              <span class="adjust-label">Pilih Frame:</span>
+              <div class="cut-buttons-group">
+                <button class="cut-select-btn active" data-cut="0">Cut 1</button>
+                <button class="cut-select-btn" data-cut="1">Cut 2</button>
+                <button class="cut-select-btn" data-cut="2">Cut 3</button>
+                <button class="cut-select-btn" data-cut="3">Cut 4</button>
+              </div>
+            </div>
+
+            <!-- Upload Custom Photo & Camera -->
+            <div class="photo-source-actions-row">
+              <input type="file" id="photoFileInput" accept="image/*" style="display: none;" />
+              <button id="uploadPhotoBtn" class="btn-source-action">
+                <span>📁 Dari Galeri</span>
+              </button>
+              <button id="openCameraBtn" class="btn-source-action btn-camera-action">
+                <span>📷 Kamera Langsung</span>
+              </button>
+            </div>
+
+            <!-- Zoom Controls -->
+            <div class="zoom-control-row">
+              <span class="adjust-label">Zoom:</span>
+              <button id="zoomOutBtn" class="btn-zoom-step" title="Zoom Out">-</button>
+              <input type="range" id="zoomSlider" min="0.8" max="3" step="0.05" value="1" class="zoom-range-input" />
+              <button id="zoomInBtn" class="btn-zoom-step" title="Zoom In">+</button>
+              <span id="zoomValLabel" class="zoom-val-text">1.0x</span>
+            </div>
+
+            <!-- Reset & Hint -->
+            <div class="adjust-footer-row">
+              <span class="gesture-hint">👆 <strong>Tips:</strong> Bisa geser foto langsung pake jari / mouse!</span>
+              <button id="resetPositionBtn" class="btn-reset-pos">↺ Reset Posisi</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 1: Frame Themed Designs (Banyak Varian Lucu & Tidak Polos) -->
+        <div class="tab-pane" id="paneFrames">
+          <div class="color-options-grid">
+            <button class="color-swatch-btn active" data-frame="frame-ribbon">
+              <span class="swatch-preview theme-swatch-ribbon">🎀</span>
+              <span class="swatch-name">Pita Ribbon</span>
+            </button>
+            <button class="color-swatch-btn" data-frame="frame-clouds">
+              <span class="swatch-preview theme-swatch-clouds">☁️</span>
+              <span class="swatch-name">Cloud Dream</span>
+            </button>
+            <button class="color-swatch-btn" data-frame="frame-gingham">
+              <span class="swatch-preview theme-swatch-gingham">🧸</span>
+              <span class="swatch-name">Butter Plaid</span>
+            </button>
+            <button class="color-swatch-btn" data-frame="frame-strawberry">
+              <span class="swatch-preview theme-swatch-strawberry">🍓</span>
+              <span class="swatch-name">Strawberry Dot</span>
+            </button>
+            <button class="color-swatch-btn" data-frame="frame-matcha">
+              <span class="swatch-preview theme-swatch-matcha">🍵</span>
+              <span class="swatch-name">Matcha Heart</span>
+            </button>
+            <button class="color-swatch-btn" data-frame="frame-lavender">
+              <span class="swatch-preview theme-swatch-lavender">✨</span>
+              <span class="swatch-name">Lilac Stars</span>
+            </button>
+            <button class="color-swatch-btn" data-frame="frame-film">
+              <span class="swatch-preview theme-swatch-film">🎞️</span>
+              <span class="swatch-name">Vintage Film</span>
+            </button>
+            <button class="color-swatch-btn" data-frame="frame-pink">
+              <span class="swatch-preview theme-swatch-pink">🌸</span>
+              <span class="swatch-name">Pastel Soft</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 2: Photo Filters -->
+        <div class="tab-pane" id="paneFilters">
+          <div class="filter-options-grid">
+            <button class="filter-btn active" data-filter="filter-normal">
+              <span>✨ Normal</span>
+            </button>
+            <button class="filter-btn" data-filter="filter-glow">
+              <span>🌸 Soft Glow</span>
+            </button>
+            <button class="filter-btn" data-filter="filter-warm">
+              <span>☕ Warm Sunset</span>
+            </button>
+            <button class="filter-btn" data-filter="filter-mono">
+              <span>🎞️ Mono Film</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 3: Sticker Tray (Purikura Deco) -->
+        <div class="tab-pane" id="paneStickers">
+          <div class="sticker-hint">Tap stiker untuk tempel ke foto, geser sesukamu!</div>
+          <div class="sticker-tray-grid">
+            <button class="sticker-chip" data-sticker="🎀">🎀</button>
+            <button class="sticker-chip" data-sticker="🐱">🐱</button>
+            <button class="sticker-chip" data-sticker="🌸">🌸</button>
+            <button class="sticker-chip" data-sticker="🥤">🥤</button>
+            <button class="sticker-chip" data-sticker="🕶️">🕶️</button>
+            <button class="sticker-chip" data-sticker="✨">✨</button>
+            <button class="sticker-chip" data-sticker="💖">💖</button>
+            <button class="sticker-chip" data-sticker="👑">👑</button>
+            <button class="sticker-chip" data-sticker="🍰">🍰</button>
+            <button class="sticker-chip" data-sticker="🧸">🧸</button>
+            <button class="sticker-chip" data-sticker="🐰">🐰</button>
+            <button class="sticker-chip" data-sticker="🍒">🍒</button>
+          </div>
+          <button id="clearStickersBtn" class="clear-stickers-btn">
+            <span>🗑️ Hapus Semua Stiker</span>
+          </button>
+        </div>
+
+        <!-- Action Buttons Bar (Snap Flash Dihapus, Download Utama Penuh) -->
+        <div class="studio-action-bar">
+          <button id="downloadBtn" class="btn-action btn-download full-width">
+            <span>💾 Simpan Photostrip</span>
+          </button>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Live Camera Viewfinder Modal -->
+  <div id="cameraModal" class="camera-modal-backdrop" style="display: none;">
+    <div class="camera-modal-box">
+      <div class="camera-modal-header">
+        <h3>📷 Ambil Foto Kamera</h3>
+        <button id="closeCameraBtn" class="camera-close-btn">✕</button>
+      </div>
+
+      <div class="camera-viewfinder-wrapper">
+        <video id="cameraVideo" autoplay playsinline muted></video>
+        <div id="cameraCountdown" class="camera-countdown-overlay" style="display: none;">3</div>
+        <div id="cameraFallbackMsg" class="camera-fallback-overlay" style="display: none;">
+          <div class="camera-fallback-content">
+            <span class="fallback-icon">📷✨</span>
+            <h4>Kamera Tidak Dapat Dibuka</h4>
+            <p>Izin kamera belum aktif atau perangkat tidak memiliki webcam. Kamu tetap bisa upload foto cantikmu lewat galeri!</p>
+            <button id="fallbackUploadBtn" class="btn-fallback-gallery">📁 Pilih Dari Galeri</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="camera-target-hint" id="cameraTargetLabel">Foto akan masuk ke: <strong>Cut 1</strong></p>
+
+      <div class="camera-action-controls">
+        <button id="takeSnapshotBtn" class="btn-snap-photo">
+          <span class="snap-shutter-circle"></span>
+          <span>Ambil Foto</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Canvas for Exporting Clean Image -->
+  <canvas id="exportCanvas" style="display:none;"></canvas>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
