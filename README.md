@@ -25,13 +25,17 @@ Aesthetic Korean 4-Cut Photobooth Studio web application. Designed for mobile an
 - **Audio & Haptics**: Built-in Web Audio API synthesizer for BGM, camera shutter, pop sounds, and soft taps.
 - **1-Click High-Res PNG Download**: Exports the complete customized photostrip via 2x Retina Canvas.
 
-## 🚀 Deployment (Vercel)
+## 🚀 Cara Deploy ke Vercel
 
-This project is built with vanilla HTML, CSS, and modern ES Modules with zero external dependencies.
+Aplikasi ini adalah static web application (HTML5, CSS3, ES Modules).
 
-1. Connect your repository (`https://github.com/Faridzzz24/A`) to [Vercel](https://vercel.com).
-2. Framework Preset: **Other** (Root Directory: `./`).
-3. Click **Deploy**. Vercel will immediately host the static web app.
+1. Buka [Vercel Dashboard](https://vercel.com/new) dan import repository `Faridzzz24/A`.
+2. Pada konfigurasi project di Vercel:
+   - **Framework Preset**: Pilih **Other**
+   - **Root Directory**: `./` (default)
+   - **Build Command**: Biarkan kosong / nonaktifkan
+   - **Output Directory**: Biarkan kosong / default
+3. Klik tombol **Deploy**. Vercel akan langsung meng-host aplikasi secara otomatis.
 
 ## 💻 Local Development
 

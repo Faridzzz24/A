@@ -1,0 +1,19 @@
+{
+  "name": "life-four-cuts-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "인생네컷 • Authentic Korean 4-Cut Photobooth Web Application",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "photobooth",
+    "korean-photobooth",
+    "life-four-cuts",
+    "purikura"
+  ],
+  "author": "Farid Maulana",
+  "license": "MIT"
+}
